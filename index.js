@@ -1,82 +1,49 @@
 
-// Math
+// reqursion
+
 // 1
+const factorial = fac => fac == 1 ? 1 : fac * factorial(fac-1)
 
-const custom = (a, b) =>  Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2))
+//2
+const palindrom = text => {
+    if(text.length % 2 == 0)
+        return false
 
-// 2
+    if(text.length == 1) 
+        return true
 
-const custom = (infelicity) => Math.random().toFixed(infelicity)
-
-//Arr
-// 1
-
-const custom = (arr) => arr.reverse()
-
-// 2
-
-const custom = (arr) => arr.reduce((acc, curr) => curr % 2 == 0 ? acc += curr : acc, 0)
-
-// 3
-
-const custom = (arr) => arr.map(e => e.trim())
-
-// For
-// 1
-
-const custom = (num) => {
-    for(let i = 1; i < 10; i++) {
-        console.log(`${num} * ${i} = ${num * i}`);
-    }
+    if(text[0] == text[text.length - 1]) 
+        return palindrom(text.substring(1, text.length - 1))
+    else return false
 }
 
-// 2
+//massiv
 
-const custom = arr => {
-    let temp = []
-   for(item of arr) {
-     temp.indexOf(item) == -1 ? temp.push(item) : null
-   }
-   return temp
+//1
+const changeMassivWhereValueLowerThanPiv = mass => {
+    const piv = mass.reduce((acc, number) => acc + number, 0) / mass.length;
+    return mass.map(e => e < piv ? e += 1 : e)
 }
-
-// 3
-
-const custom = arr => {
-    let temp = arr[0]
-   for(item of arr) {
-      item.length > temp.length ? temp = item : null
-   }
-   return temp
+//2
+const longestWorld = input => {
+    return input
+    .split(/\W+/)
+    .reduce(
+      function (longest, word) {
+        return word.length > longest.length
+          ? word
+          : longest;
+      }, 
+      ''
+    );
 }
-
-// 4
-
-const custom = arr => {
-    
-   for(let i = 0; i < arr.length; i++) {
-      arr[i] = Math.pow(arr[i], 2)
-   }
-   return arr
-}
-
-// 5
-
-const custom = arr => {
-    
-   for(let i = 0; i < arr.length; i++) {
-      arr[i] = arr[i].toLowerCase()
-   }
-   return arr
-}
-
-// 6
-
-
-const custom = arr => {
-    let summ = 0
+//4
+const changeMassiv = (arr) => {
     for (let i = 0; i < arr.length; i++) {
-        summ += arr[i] 
+        for (let j = 0; j < i; j++)
+        if (arr[j] === arr[i]) {
+            arr[i] = "повторился"
+        }
     }
-    return Math.floor(summ / arr.length)
- }
+    return arr
+}
